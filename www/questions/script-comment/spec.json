@@ -38,6 +38,16 @@
     },
     {
       "removeLines": 1
+    },
+    {
+      "removeLines": 3,
+      "addLines": [
+        "<script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'></script>",
+        "<script>document.write('<'+'!--')</script>",
+        "<img src=\"img.png\">",
+        "-->"
+      ],
+      "explanation": "3.md"
     }
   ]
 }
