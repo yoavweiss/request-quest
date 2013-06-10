@@ -70,6 +70,10 @@
             var phaseLen = data.phases.length;
 
             function doPhase() {
+              if(phase >= phaseLen) {
+                  deferred.resolve();
+                  return;
+              }
               log('Trying phase ' + phase);
               iframe.src = '/questions/' + dir + '/test?phase=' + phase;
               setTimeout(function() {
@@ -78,7 +82,8 @@
                     log('Ohh, it made a request...');
                     rq.get(iframe.src).then(function(res) {
                       outputCode(res.responseText.split('\n').slice(1, -1).join('\n'));
-                      deferred.resolve();
+                      phase++;
+                      doPhase();
                     });
                   }
                   else if (phase + 1 == phaseLen) {
